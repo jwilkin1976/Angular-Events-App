@@ -10,6 +10,8 @@ import { Component, Input } from "@angular/core";
         <div>Date: {{event?.date}}</div>
         <div>Time: {{event?.time}}</div>
         <div>Price: \${{event?.price}}</div>
+        <!-- *ngIf will remove the element from the dom, if the element is expensive to create/bind then it may be better
+             to use the html hidden property binding i.e. [hidden]="event?.location" -->
         <div *ngIf="event?.location">
             <span>Location: {{event?.location?.address}}</span>
             <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
