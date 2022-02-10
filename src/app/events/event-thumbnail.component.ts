@@ -8,7 +8,13 @@ import { Component, Input } from "@angular/core";
                only needs to be added at a top level -->
         <h2>{{event?.name}}</h2>
         <div>Date: {{event?.date}}</div>
-        <div>Time: {{event?.time}}</div>
+        <!-- ngSwitch allows us to display content conditionally based on a single property -->
+        <div [ngSwitch]="event?.time">
+            Time: {{event?.time}}
+            <span *ngSwitchCase="'8:00 am'"> (Early Start)</span>
+            <span *ngSwitchCase="'10:00 am'"> (Late Start)</span>
+            <span *ngSwitchDefault> (Normal Start)</span>
+        </div>
         <div>Price: \${{event?.price}}</div>
         <!-- *ngIf will remove the element from the dom, if the element is expensive to create/bind then it may be better
              to use the html hidden property binding i.e. [hidden]="event?.location" -->
