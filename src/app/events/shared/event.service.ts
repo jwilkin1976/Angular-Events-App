@@ -5,6 +5,10 @@ export class EventService {
     getEvents() {
         return Events
     }
+
+    getEvent(id: number) {
+      return Events.find(event => event.id === id)
+    }
 }
 
 // Dummy data used until we implement an events API
