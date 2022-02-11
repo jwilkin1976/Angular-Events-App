@@ -3,14 +3,15 @@ import { Component, Input } from "@angular/core";
 @Component({
     selector: 'event-thumbnail',
     template: `
-    <div class="well hoverwell thumbnail">
+    <!-- routerLink converts the div to a clickable link that points to /events/[event.id] -->
+    <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">
         <!-- ? is a safe navigator that will handle null values for the defined property. This short circuits so
                only needs to be added at a top level -->
         <h2>{{event?.name}}</h2>
         <div>Date: {{event?.date}}</div>
         <!-- ngSwitch allows us to display content conditionally based on a single property -->
         <!-- we can use either [ngClass] or [ngStyle] to apply conditional formatting to an element -->
-        <div [ngClass]="getStartTimeClass()" 
+        <div [ngClass]="getStartTimeClass()"
                         [ngSwitch]="event?.time">
             Time: {{event?.time}}
             <span *ngSwitchCase="'8:00 am'"> (Early Start)</span>
