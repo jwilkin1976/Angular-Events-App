@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
+// Example of a template driven form component
 @Component({
   templateUrl: './login.component.html',
   styles: [`
@@ -10,19 +11,20 @@ import { AuthService } from './auth.service';
 })
 
 export class LoginComponent {
-  userName
-  password
-  mouseoverLogin
+  userName;
+  password;
+  mouseoverLogin;
 
   constructor(private authService: AuthService, private router: Router) {
 
   }
+
   login(formValues) {
-    this.authService.loginUser(formValues.userName, formValues.password)
-    this.router.navigate(['events'])
+    this.authService.loginUser(formValues.userName, formValues.password);
+    this.router.navigate(['events']);
   }
 
   cancel() {
-    this.router.navigate(['events'])
+    this.router.navigate(['events']);
   }
 }
