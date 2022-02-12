@@ -3,6 +3,7 @@ import { Observable, Subject } from "rxjs"
 import { IEvent } from ".";
 @Injectable()
 export class EventService {
+
     getEvents():Observable<IEvent[]> {
       let subject = new Subject<IEvent[]>();
       setTimeout(() => {subject.next(Events); subject.complete(); }, 100);
@@ -17,6 +18,11 @@ export class EventService {
       event.id = 999;
       event.sessions = [];
       Events.push(event);
+    }
+
+    updateEvent(event: IEvent) {
+      let index = Events.findIndex(x => x.id = event.id);
+      Events[index] = event;
     }
 }
 

@@ -6,7 +6,7 @@ import {
   EventRouteActivator,
   EventListResolver,
   EventsListComponent,
-  CreateSessionsComponent
+  CreateSessionComponent
 } from './app/events/index';
 
 // We need to ensure our routes are in the correct order otherwise we may end up matching an unexpected route pattern
@@ -14,7 +14,7 @@ export const appRoutes: Routes = [
   { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent']},
   { path: 'events', component: EventsListComponent, resolve: {events: EventListResolver} },
   { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator]},
-  { path: 'events/session/new', component: CreateSessionsComponent },
+  { path: 'events/session/new', component: CreateSessionComponent },
   { path: '404', component: Error404Component},
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   {
