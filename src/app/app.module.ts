@@ -11,7 +11,9 @@ import {
     EventListResolver,
     CreateSessionComponent,
     SessionListComponent,
-    DurationPipe
+    UpVoteComponent,
+    DurationPipe,
+    VoterService
 } from './events/index';
 
 import { appRoutes } from 'src/routes';
@@ -45,6 +47,7 @@ let jquery = window['$'];
     SessionListComponent,
     CollapsibleWellComponent,
     SimpleModalComponent,
+    UpVoteComponent,
     ModalTriggerDirective,
     DurationPipe,
   ],
@@ -56,6 +59,7 @@ let jquery = window['$'];
     EventRouteActivator,
     EventListResolver,
     AuthService,
+    VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
