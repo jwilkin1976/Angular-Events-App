@@ -1,22 +1,12 @@
-import { Injectable } from "@angular/core"
+import { InjectionToken } from "@angular/core"
 
-declare let toastr:any
+// define token used to lookup service for dependency injection
+export let TOASTR_TOKEN = new InjectionToken<Toastr>('toastr');
 
-@Injectable()
-export class ToastrService {
-    success(message: string, title?: string) {
-        toastr.success(message, title)
-    }
-    
-    info(message: string, title?: string) {
-        toastr.info(message, title)
-    } 
-
-    warning(message: string, title?: string) {
-        toastr.warning(message, title)
-    } 
-
-    error(message: string, title?: string) {
-        toastr.error(message, title)
-    } 
+// define interface for service. We can expose as many or as few methods as our application requires
+export interface Toastr {
+  success(msg: string, title?: string): void;
+  info(msg: string, title?: string): void;
+  warning(msg: string, title?: string): void;
+  error(msg: string, title?: string): void;
 }

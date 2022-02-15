@@ -15,7 +15,7 @@ import {
 } from './events/index';
 
 import { appRoutes } from 'src/routes';
-import { ToastrService } from './common/toastr.service';
+import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
 import { Error404Component } from './errors/404.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventsAppComponent } from './events-app.component';
@@ -23,6 +23,8 @@ import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
+// Declare 3rd party modules for use within the app
+declare let toastr: Toastr;
 @NgModule({
   imports: [
     BrowserModule,
@@ -45,7 +47,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well.component';
   ],
   providers: [
     EventService,
-    ToastrService,
+    // set up 3rd party module as an injectable service using its defined injection token
+    { provide: TOASTR_TOKEN, useValue: toastr },
     EventRouteActivator,
     EventListResolver,
     AuthService,
