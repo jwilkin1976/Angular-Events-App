@@ -18,7 +18,7 @@ import { Component, Input, OnInit } from '@angular/core';
   </div>
   `,
   styles: [`
-    .modal-body {height: 250px; overflow-y: scroll; }
+    .modal-body {height: 250px; overflow-y: scroll; background-color: #4e5d6c; }
   `]
 })
 
