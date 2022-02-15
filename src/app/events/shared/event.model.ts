@@ -23,3 +23,9 @@ export interface ISession {
   abstract: string;
   voters: string[];
 }
+
+// When searching we need to include the parent event id so we
+// extend the ISession interface
+export interface ISortableSession extends ISession {
+  eventId: number;
+}

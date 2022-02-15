@@ -15,16 +15,17 @@ import {
 } from './events/index';
 
 import { appRoutes } from 'src/routes';
-import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
+import { Toastr, TOASTR_TOKEN, JQ_TOKEN, CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index';
 import { Error404Component } from './errors/404.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { EventsAppComponent } from './events-app.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
 // Declare 3rd party modules for use within the app
-declare let toastr: Toastr;
+let toastr: Toastr = window['toastr'];
+let jquery = window['$'];
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -43,12 +44,15 @@ declare let toastr: Toastr;
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    SimpleModalComponent,
+    ModalTriggerDirective,
+    DurationPipe,
   ],
   providers: [
     EventService,
     // set up 3rd party module as an injectable service using its defined injection token
     { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jquery },
     EventRouteActivator,
     EventListResolver,
     AuthService,
