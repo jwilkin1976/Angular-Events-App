@@ -13,7 +13,8 @@ import {
     SessionListComponent,
     UpVoteComponent,
     DurationPipe,
-    VoterService
+    VoterService,
+    LocationValidator
 } from './events/index';
 
 import { appRoutes } from 'src/routes';
@@ -49,6 +50,7 @@ let jquery = window['$'];
     SimpleModalComponent,
     UpVoteComponent,
     ModalTriggerDirective,
+    LocationValidator,
     DurationPipe,
   ],
   providers: [
