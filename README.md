@@ -1,4 +1,4 @@
-# Angular Events App Example
+# Angular/Typescript Events App Example
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.18.
 
