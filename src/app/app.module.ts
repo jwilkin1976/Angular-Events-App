@@ -7,14 +7,14 @@ import {
     EventDetailsComponent,
     CreateEventComponent,
     EventService,
-    EventRouteActivator,
     EventListResolver,
     CreateSessionComponent,
     SessionListComponent,
     UpVoteComponent,
     DurationPipe,
     VoterService,
-    LocationValidator
+    LocationValidator,
+    EventResolver
 } from './events/index';
 
 import { appRoutes } from 'src/routes';
@@ -24,6 +24,7 @@ import { NavBarComponent } from './nav/navbar.component';
 import { EventsAppComponent } from './events-app.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Declare 3rd party modules for use within the app
 let toastr: Toastr = window['toastr'];
@@ -34,7 +35,8 @@ let jquery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule // Required to enable Http within application
   ],
   declarations: [
     EventsAppComponent,
@@ -58,7 +60,7 @@ let jquery = window['$'];
     // set up 3rd party module as an injectable service using its defined injection token
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jquery },
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService,
     VoterService,

@@ -26,9 +26,9 @@ export class EventDetailsComponent {
   ngOnInit() {
     // Note: When using route we need to ensure that keep track of all of the components state to
     // prevent unexpected outcomes i.e. reset addMode to false
-    this.route.params.forEach((params: Params) => {
-      this.event = this.eventService.getEvent(+params['id']);
-      this.resetState();
+    this.route.data.forEach((data) => {
+        this.event = data['event'];
+        this.resetState();
     })
     // Note: the below code is not subscribing to the params and therefore introduces
     // a bug where subsequent selections of search results do not refresh the app
@@ -43,7 +43,7 @@ export class EventDetailsComponent {
     const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
     session.id = nextId + 1;
     this.event.sessions.push(session);
-    this.eventService.updateEvent(this.event);
+    this.eventService.saveEvent(this.event).subscribe();
     this.addMode = false;
   }
 
