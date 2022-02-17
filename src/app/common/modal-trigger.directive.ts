@@ -11,12 +11,13 @@ export class ModalTriggerDirective implements OnInit {
   @Input('modal-trigger') modalId: string;
 
   constructor(ref: ElementRef,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     @Inject(JQ_TOKEN) private $ : any){
       this.el = ref.nativeElement;
   }
 
   ngOnInit() {
-    this.el.addEventListener('click', e => {
+    this.el.addEventListener('click', () => {
       this.$(`#${this.modalId}`).modal({});
     })
   }

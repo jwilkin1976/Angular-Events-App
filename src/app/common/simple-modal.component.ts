@@ -31,6 +31,7 @@ export class SimpleModalComponent {
 
   @ViewChild('modalcontainer') containerEl: ElementRef;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(@Inject(JQ_TOKEN) private $: any) {
 
   }

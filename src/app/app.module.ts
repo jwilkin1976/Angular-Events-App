@@ -27,8 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Declare 3rd party modules for use within the app
-let toastr: Toastr = window['toastr'];
-let jquery = window['$'];
+const toastr: Toastr = window['toastr'];
+const jquery = window['$'];
 
 @NgModule({
   imports: [

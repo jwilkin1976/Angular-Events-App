@@ -1,6 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { filter } from 'rxjs/operators';
-import { ISpeed } from 'selenium-webdriver';
+import { Component, Input, OnChanges } from '@angular/core';
 import { AuthService } from 'src/app/user/auth.service';
 import { ISession } from '..';
 import { VoterService } from './voter.service';

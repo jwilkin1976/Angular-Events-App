@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from './shared/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { IEvent } from '.';
 
-declare let toastr // Enusre typescript is aware of 3rd party library
+//declare const toastr // Ensure typescript is aware of 3rd party library
 @Component({
     template: `
     <div>
@@ -20,8 +19,7 @@ declare let toastr // Enusre typescript is aware of 3rd party library
 export class EventsListComponent implements OnInit {
     events: IEvent[]
 
-    constructor(private eventService: EventService,
-      private route:ActivatedRoute) {
+    constructor(private route:ActivatedRoute) {
     }
 
     ngOnInit() {

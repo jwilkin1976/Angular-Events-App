@@ -15,14 +15,14 @@ export class AuthService {
 
   loginUser(userName: string, password: string) {
 
-    let loginInfo = { username: userName, password: password };
-    let options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const loginInfo = { username: userName, password: password };
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
     return this.http.post('/api/login', loginInfo, options)
       .pipe(tap(data => {
         this.currentUser = <IUser>data['user'];
       })) // leverage side effect to set currentuser data
-      .pipe(catchError(err => {
+      .pipe(catchError(() => {
         return of(false);
       }))
   }
@@ -45,14 +45,14 @@ export class AuthService {
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
 
-    let options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options);
   }
 
   logout() {
     this.currentUser = undefined;
 
-    let options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+    const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
     return this.http.post('/api/logout', {}, options);
   }
 }

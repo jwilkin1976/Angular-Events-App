@@ -11,7 +11,7 @@ export class VoterService {
 
   }
 
-  deleteVoter(eventId: number, session: ISession, voterName: string) {
+  deleteVoter(eventId: number, session: ISession, voterName: string): void {
     session.voters = session.voters.filter(voter => voter !== voterName);
 
     const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
@@ -20,7 +20,7 @@ export class VoterService {
       .subscribe(); // We do this as we are not interested in the data returned by the api
   }
 
-  addVoter(eventId: number, session: ISession, voterName: string) {
+  addVoter(eventId: number, session: ISession, voterName: string): void {
     session.voters.push(voterName);
 
     const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
@@ -30,12 +30,12 @@ export class VoterService {
       .subscribe(); // We do this as we are not interested in the data returned by the api
   }
 
-  userHasVoted(session: ISession, voterName: string) {
+  userHasVoted(session: ISession, voterName: string): boolean {
     return session.voters.some(voter => voter === voterName);
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  private handleError<T> (result?: T) {
+    return (error: unknown): Observable<T> => {
       // Add error handling below this line
       console.error(error);
       return of(result as T);

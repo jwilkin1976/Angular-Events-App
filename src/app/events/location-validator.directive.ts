@@ -9,11 +9,11 @@ import { FormGroup, NG_VALIDATORS, ValidationErrors, Validator } from "@angular/
 
 export class LocationValidator implements Validator {
   validate(formGroup: FormGroup): ValidationErrors {
-    let addressControl = formGroup.controls['address'];
-    let cityControl = formGroup.controls['city'];
-    let countryControl = formGroup.controls['country'];
+    const addressControl = formGroup.controls['address'];
+    const cityControl = formGroup.controls['city'];
+    const countryControl = formGroup.controls['country'];
     // Navigate up one level within the form to get the onlineUrl control
-    let onlineUrlControl = (<FormGroup>formGroup.root).controls['onlineUrl'];
+    const onlineUrlControl = (<FormGroup>formGroup.root).controls['onlineUrl'];
 
     // let locationFieldsCompleted = addressControl && addressControl.value
     //                               && cityControl && cityControl.value
@@ -32,8 +32,8 @@ export class LocationValidator implements Validator {
     }
 
   }
-  registerOnValidatorChange?(fn: () => void): void {
-    throw new Error("Method not implemented.");
-  }
 
+  // registerOnValidatorChange?(fn: () => void): void {
+  //   throw new Error("Method not implemented.");
+  // }
 }

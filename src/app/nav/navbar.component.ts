@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { EventService, IEvent, ISession, ISortableSession } from "../events";
+import { EventService, IEvent, ISortableSession } from "../events";
 import { AuthService } from "../user/auth.service";
 
 @Component({
@@ -13,7 +13,7 @@ import { AuthService } from "../user/auth.service";
     `]
 })
 export class NavBarComponent {
-  searchTerm: string = "";
+  searchTerm = "";
   foundSessions: ISortableSession[];
   events: IEvent[];
 

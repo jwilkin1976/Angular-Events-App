@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { EventEmitter, Injectable } from "@angular/core"
-import { Observable, of, Subject } from "rxjs"
+import { Injectable } from "@angular/core"
+import { Observable, of } from "rxjs"
 import { catchError } from "rxjs/operators";
-import { IEvent, ISession, ISortableSession } from ".";
+import { IEvent, ISession } from ".";
 @Injectable()
 export class EventService {
 
@@ -21,7 +21,7 @@ export class EventService {
     }
 
     saveEvent(event: IEvent) {
-      let options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+      const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
       return this.http.post<IEvent>('api/events', event, options)
         .pipe(catchError(this.handleError<IEvent>('saveEvent')));
     }
@@ -32,9 +32,10 @@ export class EventService {
     }
 
     private handleError<T> (operation = 'operation', result?: T) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return (error: any): Observable<T> => {
         // Add error handling below this line
-        console.error(error);
+        console.error(`${operation}: ${error}`);
         return of(result as T);
       }
     }

@@ -1,7 +1,7 @@
 import { InjectionToken } from "@angular/core"
 
 // define token used to lookup service for dependency injection
-export let TOASTR_TOKEN = new InjectionToken<Toastr>('toastr');
+export const TOASTR_TOKEN = new InjectionToken<Toastr>('toastr');
 
 // define interface for service. We can expose as many or as few methods as our application requires
 export interface Toastr {

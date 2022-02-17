@@ -1,9 +1,8 @@
-import { Component, DebugElement, NO_ERRORS_SCHEMA } from "@angular/core";
+import { DebugElement, NO_ERRORS_SCHEMA } from "@angular/core";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
-import { CollapsibleWellComponent } from "src/app/common";
 import { AuthService } from "src/app/user/auth.service";
-import { SessionListComponent, UpVoteComponent, VoterService } from ".";
+import { SessionListComponent, VoterService } from ".";
 import { DurationPipe } from "..";
 
 // Example integration test with required set-up for both deep and shallow feature tests
@@ -13,7 +12,7 @@ describe('SessionListComponent', () => {
       mockVoterService,
       fixture: ComponentFixture<SessionListComponent>,
       component: SessionListComponent,
-      element: HTMLElement,
+      //element: HTMLElement,
       debugEl: DebugElement
 
   beforeEach(() => {
@@ -40,7 +39,7 @@ describe('SessionListComponent', () => {
     fixture = TestBed.createComponent(SessionListComponent);
     component = fixture.componentInstance;
     debugEl = fixture.debugElement;
-    element = fixture.nativeElement;
+    // element = fixture.nativeElement;
   })
 
   describe('initial display', () => {
